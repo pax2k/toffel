@@ -1,0 +1,197 @@
+<html ng-app="toffelApp">
+<head>
+    <title>Tøffelhelt</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Raymond Koteng">
+    <link rel="stylesheet" href="js/bootstrap.min.css">
+    <style type="text/css">
+        label {
+            width: 100%;
+        }
+
+        input {
+            width: 100%;
+        }
+
+        select {
+            width: 100%;
+        }
+    </style>
+
+    <script type="text/javascript">
+
+        function PrintElem(elem) {
+            Popup($(elem).html());
+        }
+
+        function Popup(data) {
+            var mywindow = window.open('', 'my div', 'height=400,width=600');
+            mywindow.document.write('<html><head><title>my div</title>');
+            mywindow.document.write('</head><body >');
+            mywindow.document.write(data);
+            mywindow.document.write('</body></html>');
+
+            mywindow.document.close(); // necessary for IE >= 10
+            mywindow.focus(); // necessary for IE >= 10
+
+            mywindow.print();
+            mywindow.close();
+            return true;
+        }
+
+    </script>
+</head>
+<body class="container">
+<div ng-controller="toffelCtrl">
+
+    <div class="page-header">
+        <h1>Søknad om permisjon</h1>
+    </div>
+
+    <div class="row well">
+        <div class="col-md-4 ">
+            <label>Tittel på mottager
+                <select ng-model="titleReceiver">
+                    <option>kjæreste</option>
+                    <option>kone</option>
+                    <option>samboer</option>
+                    <option>gud</option>
+                    <option>orakel</option>
+                </select>
+            </label>
+
+            <label>Mottager
+                <input ng-model="receiver" type="text" placeholder="Navn mottager">
+            </label>
+
+        </div>
+        <div class="col-md-4">
+            <label>Dato
+                <input ng-model="date" type="text" placeholder="01:01:2015">
+            </label>
+
+            <label>Fra klokkeslett
+                <input ng-model="dateFrom" type="text" placeholder="18:00">
+            </label>
+
+            <label>Til klokkeslett
+                <input ng-model="dateTo" type="text" placeholder="23:30">
+            </label>
+
+        </div>
+        <div class="col-md-4">
+            <label>Enheter alkohol
+                <input ng-model="amountOfAlcohol" type="text" placeholder="10 stk">
+            </label>
+
+            <label>Alle steder jeg skal være
+                <input ng-model="places" type="text" placeholder="Navn på pub/disco">
+            </label>
+            <label>Kvinner jeg kan snakke med
+                <input ng-model="women" type="text" placeholder="Navn på alle kvinner">
+            </label>
+        </div>
+    </div>
+
+    <div ng-hide="valid()" class="row alert alert-danger" role="alert">
+        Fyll ut all info for å øke muligheten for permisjon!
+    </div>
+
+    <div id="printIt" class="row panel panel-default" style="padding: 15px;">
+        <div>
+            Til min {{titleReceiver}}, {{receiver}}. <br><br>
+        </div>
+
+        <div>
+            Jeg ber herved om tillatelse til å få permisjon fra den høyeste autoritet i mitt liv for følgende
+            tidsperiode:
+            <ul>
+                <li>Dato: <strong>{{date}}</strong></li>
+                <li>Fra klokka: <strong>{{dateFrom}}</strong></li>
+                <li>Til klokka: <strong>{{dateTo}}</strong></li>
+                <li>Maks enheter alkohol: <strong>{{amountOfAlcohol}}</strong></li>
+                <li>Steder som skal besøkes <strong>{{places}}</strong></li>
+                <li>Kvinner jeg kan snakke med: <strong>{{women}}</strong></li>
+            </ul>
+        </div>
+
+        <div>
+            Om søknaden skulle bli godkjent, sverger på:
+            <ul>
+                <li>
+                    Å bare besøke de stedene som er grundig gjengitt ovenfor
+                </li>
+                <li>Å kun snakke med de individene av det annet kjønn som er listet opp ovenfor
+                </li>
+                <li>Å ikke skru av min mobiltelefon etter noen øl eller drinker
+                </li>
+                <li> Å ikke ha et alkoholkonsum som overstiger den på forhånd avtalte mengde, om så allikevel skulle
+                    skje må jeg først ringe å bestille drosje eller pizza
+                </li>
+            </ul>
+        </div>
+
+        <div>
+            Jeg er inneforstått med at selv om permisjonssøknaden skulle bli godkjent, vil min {{titleReceiver}}
+            forbeholde seg retten tilå kunne være forbannet på meg den påfølgende uke uten noen som helst grunn.
+        </div>
+        <div>
+            Jeg er ingenting. Jeg vet hvem som tar avgjørelsene i vårt forhold og jeg vet at det ikke er meg. Jeg lover
+            å forholde meg til dine lover og regler. Jeg er inneforstått med at dette vil koste meg dyrt i sjokolade og
+            blomster.
+        </div>
+
+        <div>
+            Du kan regne med å ha full tilgang til å bruke mitt/mine kredittkort når du måtte ønske. Jeg lover herved å
+            overnatte kun på en benk i parken om jeg mot formodning ikke skulle klare å komme meg hjem til avtalt tid.
+            På
+            hjemveien skal jeg ikke gjøre noen forsøk på å lage bråk med noen. Jeg skal heller ikke gå i dype
+            diskusjoner
+            med andre av fare for å drite meg loddrett ut. Jeg skjønner også at jeg ikke skal urinere på følgende steder
+            når
+            jeg kommer hjem: gangen, skapet i gangen, skittentøyskurven, kjøleskapet, oppvaskmaskinen eller andre
+            lignende
+            elektriske artikler.
+        </div>
+
+        <div>
+            Jeg erklærer etter beste kunnskap(som jeg har lite av i forhold til min bedre halvdel), at ovenstående
+            informasjon er korrekt.
+        </div>
+        <hr>
+
+        <div style="text-align: center; font-weight: bold">
+            Søknad er godkjent/ikke godkjent
+        </div>
+        <div style="text-align: center;">
+            (stryk det som ikke passer)
+        </div>
+
+        <div>
+            Signatur fra min {{titleReceiver}}:
+        </div>
+        <hr>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-6 col-md-4"></div>
+    <div class="col-xs-6 col-md-4"><input type="button" value="Skriv ut tøffelsøknad" onclick="PrintElem('#printIt')"/>
+    </div>
+    <div class="col-xs-6 col-md-4"></div>
+</div>
+<br>
+<br>
+<br>
+<div style="text-align: center;">
+    Created by Raymond Koteng and lunga.net, ukjent opphav
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="js/toffelApp.js"></script>
+<script src="js/toffelCtrl.js"></script>
+</body>
+</html>
