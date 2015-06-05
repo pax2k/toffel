@@ -1,10 +1,5 @@
 <html ng-app="toffelApp">
 <head>
-    <title>Tøffelhelt</title>
-
-
-    <meta name="description" content="Søknad for tøffelhelter" />
-
     <!-- Schema.org markup for Google+ -->
     <meta itemprop="name" content="Tøffelhelter">
     <meta itemprop="description" content="Søknad for tøffelhelter">
@@ -15,20 +10,25 @@
     <meta name="twitter:creator" content="@pax2k">
 
     <!-- Open Graph data -->
-    <meta property="og:title" content="Tøffelhelter" />
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content="http://xn--tffelhelter-ggb.no/" />
-    <meta property="og:description" content="Søknad for tøffelhelter" />
-    <meta property="og:site_name" content="Tøffelhelter" />
-    <meta property="article:section" content="Article Section" />
-    <meta property="article:tag" content="Article Tag" />
+    <meta property="og:title" content="Tøffelhelter"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:url" content="http://xn--tffelhelter-ggb.no/"/>
+    <meta property="og:description" content="Søknad for tøffelhelter"/>
+    <meta property="og:site_name" content="Tøffelhelter"/>
+    <meta property="article:section" content="Article Section"/>
+    <meta property="article:tag" content="Article Tag"/>
 
+    <!-- General meta tags -->
+    <title>Tøffelhelt</title>
+    <meta name="description" content="Søknad for tøffelhelter"/>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Raymond Koteng">
+
     <link rel="icon" href=image/favicon.ico>
     <link rel="stylesheet" href="js/bootstrap.min.css">
+
     <style type="text/css">
         label {
             width: 100%;
@@ -43,6 +43,7 @@
         }
     </style>
 
+    <!-- Print div script -->
     <script type="text/javascript">
 
         function PrintElem(elem) {
@@ -65,17 +66,29 @@
         }
 
     </script>
+
+    <!-- Script for Google analytics -->
     <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
         ga('create', 'UA-62939916-1', 'auto');
         ga('send', 'pageview');
     </script>
 </head>
+
 <body class="container">
+
+<!--Facebook js sdk-->
 <div id="fb-root"></div>
 <script>(function (d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
@@ -86,6 +99,8 @@
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 </script>
+
+<!-- Actual web app -->
 <div ng-controller="toffelCtrl">
 
     <div class="page-header">
@@ -177,7 +192,7 @@
 
         <div>
             Jeg er inneforstått med at selv om permisjonssøknaden skulle bli godkjent, vil min {{titleReceiver}}
-            forbeholde seg retten tilå kunne være forbannet på meg den påfølgende uke uten noen som helst grunn.
+            forbeholde seg retten til å kunne være forbannet på meg den påfølgende uke uten noen som helst grunn.
         </div>
         <div>
             Jeg er ingenting. Jeg vet hvem som tar avgjørelsene i vårt forhold og jeg vet at det ikke er meg. Jeg lover
@@ -226,7 +241,12 @@
 </div>
 <br>
 <br>
-<div class="fb-like" data-href="http://www.t&#xf8;ffelhelter.no" data-width="150px" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+
+<!-- Facebook like button -->
+<div class="fb-like" data-href="http://www.t&#xf8;ffelhelter.no" data-width="150px" data-layout="button_count"
+     data-action="like" data-show-faces="true" data-share="true"></div>
+
+<!-- Footer-->
 <div style="text-align: center;">
     Created by Raymond Koteng, ukjent opphav.
 </div>
